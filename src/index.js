@@ -1,4 +1,4 @@
- tconst express = require('express');
+const express = require('express');
 const cors = require('cors');
 
 const { v4: uuidv4 } = require('uuid');
@@ -30,7 +30,7 @@ app.post('/users', (request, response) => {
   const userExists = users.find((users) => users.username === username);
 
   if(userExists) {
-    return response.status(400).json({ error: 'Username already Is exists'});
+    return response.status(400).json({ error: 'Username Is exists'});
   };
 
   const user = { 
@@ -82,6 +82,8 @@ app.put('/todos/:id', checksExistsUserAccount, (request, response) => {
 
   todo.title = title;
   todo.deadline = new Date(deadline);
+  
+
 
   return response.status(200).json(todo);
 
@@ -118,4 +120,4 @@ app.delete('/todos/:id', checksExistsUserAccount, (request, response) => {
   return response.status(204).json();
 });
 
-module.exports = app;e
+module.exports = app;
